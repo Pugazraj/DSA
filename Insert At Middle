@@ -1,0 +1,30 @@
+// Insert a node in middle of the LinkedList
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+      
+  }
+}
+
+class Node{
+  int data;
+  Node next;
+  Node(int data){
+    this.data = data;
+    this.next = next;
+  }
+}
+class LinkedList{
+  Node head = null;
+  void insertAtMiddle(int ele,int center){
+    Node newNode = newNode(ele);
+    Node temp = head;
+    for(int i=0;i<center-1;i++){
+      temp = temp.next;
+      newNode.next = temp.next;
+      temp.next = newNode;
+    }
+  }
+}
