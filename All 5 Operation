@@ -1,0 +1,94 @@
+//Insert, Delete and Display for LinkedList
+
+class Node {
+	int data;
+	Node next;
+	Node(int data) {
+		this.data = data;
+		this.next = null;
+	}
+}
+class LinkedList {
+	Node head = null;
+	Node tail = null;
+	int size = 0;
+	void insertAtLast(int ele) {
+		Node nn = new Node(ele);
+		if(head==null) {
+			head = nn;
+			tail = nn;
+			size++;
+			return;
+		}
+		tail.next = nn;
+		tail = nn;
+		size++;
+	}
+	void insertAtFirst(int ele) {
+		Node nn = new Node(ele);
+		if(head==null) {
+			head = nn;
+			tail = nn;
+			size++;
+			return;
+		}
+		nn.next = head;
+		head = nn;
+		size++;
+	}
+
+	void deleteAtFirst() {
+		if(head==null) {
+			System.out.println("underflow");
+			return;
+		}
+		head = head.next;
+		size--;
+	}
+	void deleteAtLast() {
+		if(head==null) {
+			System.out.println("underflow");
+			return;
+		}
+		Node temp = head;
+		/*
+		 while(temp.next.next!=null){
+		     temp = temp.next;
+		 }
+		 */
+		while(temp.next!=tail) {
+			temp = temp.next;
+		}
+		temp.next = null;
+		tail = temp;
+		size--;
+	}
+	void display() {
+		Node temp = head;
+		while(temp!=null) {
+			System.out.print(temp.data+" ");
+			temp = temp.next;
+		}
+	}
+
+}
+public class Main
+{
+	public static void main(String[] args) {
+		LinkedList ll = new LinkedList();
+		ll.insertAtLast(1);
+		ll.insertAtLast(2);
+		ll.insertAtLast(3);
+		ll.insertAtLast(4);
+		ll.display();
+		System.out.println();
+		ll.insertAtFirst(5);
+		ll.display();
+		System.out.println();
+		ll.deleteAtLast();
+		ll.deleteAtFirst();
+		ll.display();
+		System.out.println();
+		System.out.println(ll.size);
+	}
+}
